@@ -6,14 +6,6 @@ A Power BI dashboard analyzing **2.26M+ loan records** and **$34B+ in loan volum
 ![DAX](https://img.shields.io/badge/DAX-217346?style=for-the-badge&logo=microsoft&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen?style=for-the-badge)
 
-<p align="center">
-  <img src="./assets/dashboard-preview.png" alt="LendingClub Dashboard Preview" width="850">
-</p>
-
-<p align="center">
-  <em>Loan Summary page — purpose breakdown, default rate by grade, and interest rate trend</em>
-</p>
-
 ---
 
 ## 📌 Overview
@@ -26,29 +18,19 @@ The dashboard connects loan volume, interest rate pricing, and default rate acro
 
 ---
 
-## 🖥️ Dashboard Pages
-
-| Page | What It Covers |
-|---|---|
-| **Overview** | Company background, share ownership breakdown, historical stock price trend |
-| **Loan Summary** | Loan purpose distribution, interest rate trend, loan status breakdown, default rate by grade |
-| **Quarterly / Trend** | Year-over-year loan growth, default rate YoY growth, net revenue by quarter |
-| **Risk Analysis** | Loan amount by state (map), loan purpose, employment length vs. salary, state-level detail table |
-
----
-
 ## 🖼️ Screenshots
 
-<table>
-  <tr>
-    <td width="50%"><img src="./assets/overview.png" alt="Overview Page"><p align="center"><b>Overview</b></p></td>
-    <td width="50%"><img src="./assets/loan-summary.png" alt="Loan Summary Page"><p align="center"><b>Loan Summary</b></p></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="./assets/quarterly-trend.png" alt="Quarterly Trend Page"><p align="center"><b>Quarterly / Trend</b></p></td>
-    <td width="50%"><img src="./assets/risk-analysis.png" alt="Risk Analysis Page"><p align="center"><b>Risk Analysis</b></p></td>
-  </tr>
-</table>
+### Overview
+![Overview Page](./Overview.png)
+
+### Loan Summary
+![Loan Summary Page](./Loan%20page.png)
+
+### Quarterly / Trend
+![Quarterly Trend Page](./trend%20page.png)
+
+### Risk Analysis
+![Risk Analysis Page](./map%20page.png)
 
 ---
 
@@ -70,7 +52,6 @@ The dashboard connects loan volume, interest rate pricing, and default rate acro
 | `Net Revenue` | Measure | Clean sum of quarterly net revenue |
 | `Client Status` | Calculated Column | Groups loan_status into Active / Paid Off / Defaulter / Other |
 | `DTI Range` | Calculated Column | Buckets debt-to-income ratio into risk bands |
-| `SortOrder` | Calculated Column | Forces correct chronological quarter sorting |
 
 **Example — YoY Growth (built without a dedicated date table):**
 ```dax
@@ -86,72 +67,30 @@ RETURN
     DIVIDE(CurrentRate - PriorRate, PriorRate)
 ```
 
-```dax
-Client Status =
-SWITCH(
-    TRUE(),
-    loan[loan_status] = "Current", "Active",
-    loan[loan_status] = "Fully Paid", "Paid Off",
-    loan[loan_status] = "Charged Off", "Defaulter",
-    loan[loan_status] = "Default", "Defaulter",
-    "Other/Late"
-)
-```
-
 ---
 
 ## 🛠️ Tech Stack
 
 - **Platform:** Microsoft Power BI Desktop
-- **Data Analysis:** DAX — `CALCULATE`, `FILTER`, `SWITCH`, `DIVIDE`, `DATATABLE`, time intelligence
-- **Data Sources:**
-  - [Kaggle — LendingClub Loan Dataset](https://www.kaggle.com/) (2.26M+ records, 2007–2018)
-  - SEC EDGAR filings (8-K, 10-K, 10-Q) — quarterly revenue verification
-  - LendingClub Investor Relations — stock price & ownership data
-- **Visuals used:** Line, Column/Bar, Donut/Pie, Area, Combo (Line + Column), Map, Matrix, KPI Cards
+- **Data Analysis:** DAX — `CALCULATE`, `FILTER`, `SWITCH`, `DIVIDE`, time intelligence
+- **Data Sources:** [Kaggle LendingClub Loan Dataset](https://www.kaggle.com/) (2.26M+ records), SEC EDGAR filings, LendingClub Investor Relations
 
 ---
 
 ## 🐛 A Real Debugging Story
 
-Two metrics — **YoY Growth** and **Quarterly Revenue** — initially used Power BI's built-in *"% of Grand Total"* quick measure by mistake instead of true time-intelligence logic. This produced a misleading 0–200% axis scale that looked plausible until the underlying DAX was inspected. Both were diagnosed and rebuilt from scratch using proper `CALCULATE` + `FILTER(ALL())` patterns — a good reminder that a chart rendering without errors doesn't mean the math behind it is correct.
-
----
-
-## 📂 Repository Contents
-
-```
-├── assets/
-│   ├── dashboard-preview.png       # Main preview image (top of README)
-│   ├── overview.png
-│   ├── loan-summary.png
-│   ├── quarterly-trend.png
-│   └── risk-analysis.png
-├── DASHBOARD.pbix                  # Full Power BI report file
-├── LendingClub_Project_Report.pdf  # Written project summary & analysis
-└── README.md                       # You are here
-```
+Two metrics — **YoY Growth** and **Quarterly Revenue** — initially used Power BI's built-in *"% of Grand Total"* quick measure by mistake instead of true time-intelligence logic. This produced a misleading 0–200% axis scale that looked plausible until the underlying DAX was inspected. Both were rebuilt from scratch using proper `CALCULATE` + `FILTER(ALL())` patterns.
 
 ---
 
 ## 🚀 How to View
 
-1. **Download** [`DASHBOARD.pbix`](./DASHBOARD.pbix)
-2. Open it in **Power BI Desktop** (free — [download here](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads))
-3. Explore all 4 pages using the tabs at the bottom of the report
-
-> 💡 No Power BI installed? Screenshots of each page are included in the project report PDF above.
+1. Download [`DASHBOARD.pbix`](./DASHBOARD.pbix)
+2. Open it in **Power BI Desktop** ([free download](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads))
+3. Explore all 4 pages using the tabs at the bottom
 
 ---
 
 ## 📄 Data Governance Note
 
-Borrower age and gender were intentionally **not** included in this analysis. LendingClub's public dataset excludes these fields in compliance with the **Equal Credit Opportunity Act (ECOA) / Regulation B**, which restricts lenders from using such attributes in credit decisions. Rather than fabricate this data, the analysis relies on legitimate available fields — employment length, debt-to-income ratio, and loan grade.
-
----
-
-## 📬 Contact
-
-Feel free to reach out if you have questions about the methodology or want to discuss the analysis.
-
-⭐ If you found this project useful, consider giving it a star!
+Borrower age and gender were intentionally **not** included in this analysis. LendingClub's public dataset excludes these fields in compliance with the **Equal Credit Opportunity Act (ECOA) / Regulation B**, which restricts lenders from using such attributes in credit decisions. The analysis relies on legitimate available fields instead — employment length, debt-to-income ratio, and loan grade.
