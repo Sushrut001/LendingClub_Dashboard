@@ -82,6 +82,24 @@ VAR PriorRate =
     )
 RETURN
     DIVIDE(CurrentRate - PriorRate, PriorRate)
+
 ```
+---
+
+## 🙌 Thank You
+
+Thanks for taking the time to explore this project! I built this dashboard to show how raw loan-level data can be turned into real, decision-ready insights for credit risk and portfolio strategy.
+
+If you're hiring for a **Data Analyst** role, I'd love to connect and talk about how I can bring this kind of thinking to your team.
+
+📩 **Let's connect:** [sushrutworks@gmail.com](mailto:sushrutworks@gmail.com)
+🔗 **LinkedIn:** [https://www.linkedin.com/in/sushrutt/](https://www.linkedin.com/in/sushrutt/)
+💻 **Portfolio:** [https://sushrut-portfolio.netlify.app/](https://sushrut-portfolio.netlify.app/)
+
+---
+
+
+
+
 
  
