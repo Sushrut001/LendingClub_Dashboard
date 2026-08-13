@@ -94,7 +94,7 @@ If you're hiring for a **Data Analyst** role, I'd love to connect and talk about
 
 📩 **Let's connect:** [sushrutworks@gmail.com](mailto:sushrutworks@gmail.com)
 🔗 **LinkedIn:** [https://www.linkedin.com/in/sushrutt/](https://www.linkedin.com/in/sushrutt/)
-💻 **Portfolio:** [https://sushrut-portfolio.netlify.app/](https://sushrut-portfolio.netlify.app/)
+💻 **Portfolio:** [https://sushrut-portfolio.netlify.app/](https://sushrut-portfolio.com/)
 
 ---
 
