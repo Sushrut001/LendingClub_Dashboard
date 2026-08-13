@@ -17,7 +17,15 @@ This project analyzes LendingClub's historical peer-to-peer loan portfolio to an
 The dashboard connects loan volume, interest rate pricing, and default rate across a 4-page report, built entirely in Power BI using custom DAX measures and verified external data (SEC filings, stock price history, ownership structure).
 
 ---
+## 🚀 How to View
 
+| Step | Action |
+|---|---|
+| 1️⃣ | Download [`DASHBOARD.pbix`](./DASHBOARD.pbix) |
+| 2️⃣ | Open in **Power BI Desktop** — [free download here](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads) |
+| 3️⃣ | Explore all **4 report pages** using the tabs at the bottom |
+
+> 💡 No Power BI installed? You can also browse the screenshots for a quick preview of all pages.
 ## 🖼️ Screenshots
 
 ### Overview
@@ -32,6 +40,15 @@ The dashboard connects loan volume, interest rate pricing, and default rate acro
 ### Risk Analysis
 ![Risk Analysis Page](./map%20page.png)
 
+---
+
+
+## 🛠️ Tech Stack
+
+- **Platform:** Microsoft Power BI Desktop
+- **Data Analysis:** DAX — `CALCULATE`, `FILTER`, `SWITCH`, `DIVIDE`, time intelligence
+- **Data Sources:** [Kaggle LendingClub Loan Dataset](https://www.kaggle.com/) (2.26M+ records), SEC EDGAR filings, LendingClub Investor Relations
+ 
 ---
 
 ## 🔑 Key Findings
@@ -67,30 +84,4 @@ RETURN
     DIVIDE(CurrentRate - PriorRate, PriorRate)
 ```
 
----
-
-## 🛠️ Tech Stack
-
-- **Platform:** Microsoft Power BI Desktop
-- **Data Analysis:** DAX — `CALCULATE`, `FILTER`, `SWITCH`, `DIVIDE`, time intelligence
-- **Data Sources:** [Kaggle LendingClub Loan Dataset](https://www.kaggle.com/) (2.26M+ records), SEC EDGAR filings, LendingClub Investor Relations
-
----
-
-## 🐛 A Real Debugging Story
-
-Two metrics — **YoY Growth** and **Quarterly Revenue** — initially used Power BI's built-in *"% of Grand Total"* quick measure by mistake instead of true time-intelligence logic. This produced a misleading 0–200% axis scale that looked plausible until the underlying DAX was inspected. Both were rebuilt from scratch using proper `CALCULATE` + `FILTER(ALL())` patterns.
-
----
-
-## 🚀 How to View
-
-1. Download [`DASHBOARD.pbix`](./DASHBOARD.pbix)
-2. Open it in **Power BI Desktop** ([free download](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads))
-3. Explore all 4 pages using the tabs at the bottom
-
----
-
-## 📄 Data Governance Note
-
-Borrower age and gender were intentionally **not** included in this analysis. LendingClub's public dataset excludes these fields in compliance with the **Equal Credit Opportunity Act (ECOA) / Regulation B**, which restricts lenders from using such attributes in credit decisions. The analysis relies on legitimate available fields instead — employment length, debt-to-income ratio, and loan grade.
+ 
