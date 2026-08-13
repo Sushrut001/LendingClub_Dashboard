@@ -18,10 +18,9 @@ The dashboard connects loan volume, interest rate pricing, and default rate acro
 
 ---
 ## 🚀 How to View
-
 | Step | Action |
 |---|---|
-| 1️⃣ | Download [`DASHBOARD.pbix`](./DASHBOARD.pbix) |
+| 1️⃣ | [**Download DASHBOARD.pbix**](https://github.com/Sushrut001/LendingClub_Dashboard/raw/main/DASHBOARD.pbix) |
 | 2️⃣ | Open in **Power BI Desktop** — [free download here](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads) |
 | 3️⃣ | Explore all **4 report pages** using the tabs at the bottom |
 
