@@ -46,7 +46,7 @@ The dashboard connects loan volume, interest rate pricing, and default rate acro
 
 - **Platform:** Microsoft Power BI Desktop
 - **Data Analysis:** DAX — `CALCULATE`, `FILTER`, `SWITCH`, `DIVIDE`, time intelligence
-- **Data Sources:** [Kaggle LendingClub Loan Dataset](https://www.kaggle.com/) (2.26M+ records), SEC EDGAR filings, LendingClub Investor Relations
+- **Data Sources:** [Kaggle LendingClub Loan Dataset](https://www.kaggle.com/datasets/adarshsng/lending-club-loan-data-csv) (2.26M+ records), SEC EDGAR filings, LendingClub Investor Relations
  
 ---
 
